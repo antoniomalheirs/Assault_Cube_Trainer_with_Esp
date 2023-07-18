@@ -2,13 +2,15 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun;
+
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask;
+        private SynchronizationContext synchronizationContext;
 
         static FunctionsHack injetor;
         static Player cplayer;
-
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask;
-
+        static Entitylist clist;
+        static ListView listview;
 
         public Form1()
         {
@@ -19,6 +21,14 @@ namespace Esp_Hack
         {
             injetor = new FunctionsHack();
             cplayer = new Player();
+            clist = new Entitylist();
+            listview = new ListView();
+
+            Controls.Add(listview);
+            listview.Location = new Point(379, 12);
+            listview.Size = new Size(570, 300);
+
+            synchronizationContext = SynchronizationContext.Current;
         }
 
         private void Infitelife_CheckedChanged(object sender, EventArgs e)
@@ -102,12 +112,11 @@ namespace Esp_Hack
         {
             if (Showlistview.Checked == true)
             {
-
-                
+                Listarun();
             }
             else
             {
-                
+                StopListarun();
             }
         }
 
@@ -281,6 +290,52 @@ namespace Esp_Hack
                 locationtask.Cancel();
                 locationtask.Dispose();
                 locationtask = null;
+            }
+        }
+
+        private void Listarun()
+        {
+            listview.View = View.Details;
+
+            listview.Columns.Add("Pointer", 80);
+            listview.Columns.Add("Name", 80);
+            listview.Columns.Add("Heatlh", 80);
+            listview.Columns.Add("Team", 80);
+            listview.Columns.Add("X", 80);
+            listview.Columns.Add("Y", 80);
+            listview.Columns.Add("Z", 85);
+
+            listatask = new CancellationTokenSource();
+            CancellationToken Kcancel = listatask.Token;
+            listarun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    synchronizationContext.Post(new SendOrPostCallback((state) =>
+                    {
+                        injetor.showEntitylist(clist.getEntitybotList(), listview);
+                    }), null);
+
+                    Thread.Sleep(100);
+                }
+
+                listarun = false;
+            });
+        }
+
+
+        private static void StopListarun()
+        {
+            if (listarun)
+            {
+                listatask.Cancel();
+                listatask.Dispose();
+                listatask = null;
+
+                listview.Items.Clear();
+                listview.Columns.Clear();
             }
         }
     }

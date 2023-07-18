@@ -14,6 +14,8 @@ namespace Esp_Hack
         private Swed game;
 
         private readonly Player player = new Player();
+        private readonly Entitylist clist = new Entitylist();
+
 
         public FunctionsHack()
         {
@@ -102,6 +104,12 @@ namespace Esp_Hack
 
         public void showEntitylist(List<Enemy> list, ListView ltview)
         {
+            if (ltview.InvokeRequired)
+            {
+                ltview.Invoke(new Action<List<Enemy>, ListView>(showEntitylist), list, ltview);
+                return;
+            }
+
             ltview.Items.Clear();
 
             foreach (Enemy enemy in list)
@@ -117,6 +125,7 @@ namespace Esp_Hack
                 ltview.Items.Add(item);
             }
         }
+
 
     }
 }
