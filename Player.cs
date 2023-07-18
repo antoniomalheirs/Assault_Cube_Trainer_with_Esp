@@ -34,7 +34,6 @@ namespace Esp_Hack
         private float Xx;
         private float Yy;
         private float Zz;
-        private int pid;
         private Vector3 pos;
 
         public Player()
@@ -42,6 +41,7 @@ namespace Esp_Hack
             game = new Swed("ac_client");
             basePtr = game.ReadPointer(game.GetModuleBase(".exe"), playerobject);
         }
+
         public int getHealth()
         {
             healthh = game.ReadInt(basePtr, health);

@@ -144,6 +144,11 @@ namespace Esp_Hack
             }
         }
 
+        private void Esphack_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private static void Healthrun()
         {
             heatlhtask = new CancellationTokenSource();

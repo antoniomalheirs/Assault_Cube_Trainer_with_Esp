@@ -13,7 +13,7 @@ namespace Esp_Hack
         private Swed game;
 
         private readonly Player player = new Player();
-        private readonly Entitylist clist = new Entitylist();
+        //private readonly Entitylist clist = new Entitylist();
 
         public FunctionsHack()
         {

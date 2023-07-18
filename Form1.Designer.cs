@@ -38,6 +38,7 @@
             Showlistview = new CheckBox();
             Setentitylife = new CheckBox();
             Enemyfrezzy = new CheckBox();
+            Esphack = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -148,11 +149,23 @@
             Enemyfrezzy.UseVisualStyleBackColor = true;
             Enemyfrezzy.CheckedChanged += Enemyfrezzy_CheckedChanged;
             // 
+            // Esphack
+            // 
+            Esphack.AutoSize = true;
+            Esphack.Location = new Point(63, 282);
+            Esphack.Name = "Esphack";
+            Esphack.Size = new Size(74, 19);
+            Esphack.TabIndex = 12;
+            Esphack.Text = "Esp Hack";
+            Esphack.UseVisualStyleBackColor = true;
+            Esphack.CheckedChanged += Esphack_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 332);
+            Controls.Add(Esphack);
             Controls.Add(Enemyfrezzy);
             Controls.Add(Setentitylife);
             Controls.Add(Showlistview);
@@ -182,5 +195,6 @@
         private CheckBox Showlistview;
         private CheckBox Setentitylife;
         private CheckBox Enemyfrezzy;
+        private CheckBox Esphack;
     }
 }
