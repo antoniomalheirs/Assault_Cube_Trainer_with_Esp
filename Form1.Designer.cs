@@ -31,6 +31,9 @@
             label1 = new Label();
             Infitelife = new CheckBox();
             Infiniteshield = new CheckBox();
+            Infinitebullets = new CheckBox();
+            Infinitepbullets = new CheckBox();
+            Infiteexplosive = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -64,11 +67,47 @@
             Infiniteshield.UseVisualStyleBackColor = true;
             Infiniteshield.CheckedChanged += Infiniteshield_CheckedChanged;
             // 
+            // Infinitebullets
+            // 
+            Infinitebullets.AutoSize = true;
+            Infinitebullets.Location = new Point(63, 107);
+            Infinitebullets.Name = "Infinitebullets";
+            Infinitebullets.Size = new Size(101, 19);
+            Infinitebullets.TabIndex = 4;
+            Infinitebullets.Text = "Infinite Bullets";
+            Infinitebullets.UseVisualStyleBackColor = true;
+            Infinitebullets.CheckedChanged += Infinitebullets_CheckedChanged;
+            // 
+            // Infinitepbullets
+            // 
+            Infinitepbullets.AutoSize = true;
+            Infinitepbullets.Location = new Point(63, 132);
+            Infinitepbullets.Name = "Infinitepbullets";
+            Infinitepbullets.Size = new Size(133, 19);
+            Infinitepbullets.TabIndex = 5;
+            Infinitepbullets.Text = "Infinite Pistol Bullets";
+            Infinitepbullets.UseVisualStyleBackColor = true;
+            Infinitepbullets.CheckedChanged += Infinitepbullets_CheckedChanged;
+            // 
+            // Infiteexplosive
+            // 
+            Infiteexplosive.AutoSize = true;
+            Infiteexplosive.Location = new Point(63, 157);
+            Infiteexplosive.Name = "Infiteexplosive";
+            Infiteexplosive.Size = new Size(105, 19);
+            Infiteexplosive.TabIndex = 6;
+            Infiteexplosive.Text = "Infite Explosive";
+            Infiteexplosive.UseVisualStyleBackColor = true;
+            Infiteexplosive.CheckedChanged += Infiteexplosive_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 449);
+            Controls.Add(Infiteexplosive);
+            Controls.Add(Infinitepbullets);
+            Controls.Add(Infinitebullets);
             Controls.Add(Infiniteshield);
             Controls.Add(Infitelife);
             Controls.Add(label1);
@@ -84,5 +123,8 @@
         private Label label1;
         private CheckBox Infitelife;
         private CheckBox Infiniteshield;
+        private CheckBox Infinitebullets;
+        private CheckBox Infinitepbullets;
+        private CheckBox Infiteexplosive;
     }
 }

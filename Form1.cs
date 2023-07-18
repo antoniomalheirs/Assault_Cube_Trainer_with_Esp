@@ -2,11 +2,11 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun;
 
         static FunctionsHack injetor;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask;
 
 
         public Form1()
@@ -55,7 +55,6 @@ namespace Esp_Hack
             {
                 StopBulletsrun();
             }
-
         }
 
         private void Infinitepbullets_CheckedChanged(object sender, EventArgs e)
@@ -68,6 +67,19 @@ namespace Esp_Hack
             else
             {
                 StopPbulletsrun();
+            }
+        }
+
+        private void Infiteexplosive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Infiteexplosive.Checked == true)
+            {
+
+                Explosiverun();
+            }
+            else
+            {
+                StopExplosiverun();
             }
         }
 
@@ -184,6 +196,35 @@ namespace Esp_Hack
                 pbulletstask.Cancel();
                 pbulletstask.Dispose();
                 pbulletstask = null;
+            }
+        }
+
+        private static void Explosiverun()
+        {
+            explosivetask = new CancellationTokenSource();
+            CancellationToken Kcancel = explosivetask.Token;
+            explosiverun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.Frezexplosive(10);
+                    Thread.Sleep(100);
+                }
+
+                explosiverun = false;
+            });
+        }
+
+        private static void StopExplosiverun()
+        {
+            if (explosiverun)
+            {
+                injetor.Frezexplosive(0);
+                explosivetask.Cancel();
+                explosivetask.Dispose();
+                explosivetask = null;
             }
         }
     }

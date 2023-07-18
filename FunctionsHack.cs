@@ -59,5 +59,15 @@ namespace Esp_Hack
         {
             game.WriteInt(player.basePtr + player.pbullets, 10);
         }
+
+        public void Frezexplosive(int explosive)
+        {
+            game.WriteInt(player.basePtr + player.explosive, explosive);
+        }
+
+        public void Unfrezexplosive()
+        {
+            game.WriteInt(player.basePtr + player.explosive, 0);
+        }
     }
 }
