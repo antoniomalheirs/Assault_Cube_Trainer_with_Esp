@@ -43,6 +43,48 @@ namespace Esp_Hack
             fundPtr = game.GetModuleBase(".exe");
             basePtr = game.ReadPointer(fundPtr, 0x0018AC04);
         }
+
+        public int getBotnumber()
+        {
+            botnumberr = game.ReadInt(fundPtr, 0x0018AC0C) - 1;
+            return botnumberr;
+        }
+
+        public string getName()
+        {
+            namee = Encoding.UTF8.GetString(game.ReadBytes(entityPtr, name, 16));
+            return namee;
+        }
+
+        public int getHealth()
+        {
+            healthh = game.ReadInt(entityPtr, health);
+            return healthh;
+        }
+
+        public int getTeam()
+        {
+            teamm = game.ReadInt(entityPtr, team);
+            return teamm;
+        }
+
+        public float getX()
+        {
+            Xx = game.ReadFloat(entityPtr, X);
+            return Xx;
+        }
+
+        public float getY()
+        {
+            Yy = game.ReadFloat(entityPtr, Y);
+            return Yy;
+        }
+
+        public float getZ()
+        {
+            Zz = game.ReadFloat(entityPtr, Z);
+            return Zz;
+        }
     }
 
     internal class Enemy
