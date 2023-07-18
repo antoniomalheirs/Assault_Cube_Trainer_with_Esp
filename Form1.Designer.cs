@@ -34,6 +34,7 @@
             Infinitebullets = new CheckBox();
             Infinitepbullets = new CheckBox();
             Infiteexplosive = new CheckBox();
+            Frezzyposition = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -100,11 +101,23 @@
             Infiteexplosive.UseVisualStyleBackColor = true;
             Infiteexplosive.CheckedChanged += Infiteexplosive_CheckedChanged;
             // 
+            // Frezzyposition
+            // 
+            Frezzyposition.AutoSize = true;
+            Frezzyposition.Location = new Point(63, 182);
+            Frezzyposition.Name = "Frezzyposition";
+            Frezzyposition.Size = new Size(104, 19);
+            Frezzyposition.TabIndex = 7;
+            Frezzyposition.Text = "Frezzy Position";
+            Frezzyposition.UseVisualStyleBackColor = true;
+            Frezzyposition.CheckedChanged += Frezzyposition_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 449);
+            Controls.Add(Frezzyposition);
             Controls.Add(Infiteexplosive);
             Controls.Add(Infinitepbullets);
             Controls.Add(Infinitebullets);
@@ -126,5 +139,6 @@
         private CheckBox Infinitebullets;
         private CheckBox Infinitepbullets;
         private CheckBox Infiteexplosive;
+        private CheckBox Frezzyposition;
     }
 }
