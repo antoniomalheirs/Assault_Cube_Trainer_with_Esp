@@ -1,0 +1,17 @@
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\Esp_Hack.exe
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\Esp_Hack.deps.json
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\Esp_Hack.runtimeconfig.json
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\Esp_Hack.dll
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\Esp_Hack.pdb
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.csproj.AssemblyReference.cache
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.Form1.resources
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.csproj.GenerateResource.cache
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.AssemblyInfoInputs.cache
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.AssemblyInfo.cs
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.csproj.CoreCompileInputs.cache
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.dll
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\refint\Esp_Hack.dll
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.pdb
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.genruntimeconfig.cache
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\ref\Esp_Hack.dll

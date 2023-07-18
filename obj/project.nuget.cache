@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qx8oIHpiTUnluRuQyy7sE7LCO7DEkFr0Rl+l5klAION3Qedup1oYgT9LpMHHh/MMMuANYsZNNOwV688p5mHNxg==",
+  "dgSpecHash": "iAMMWEC3GYIPB3+67s5D2kJj+NWbYx+Oama5ko2TOkeB3XDFcf1cep9kUesNocME59fOWHKkel3HZMQJn76e2A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Anton\\OneDrive\\Área de Trabalho\\game\\Esp_Hack\\Esp_Hack.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Anton\\.nuget\\packages\\swed32\\1.1.0\\swed32.1.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

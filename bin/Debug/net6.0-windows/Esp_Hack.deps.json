@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Esp_Hack/1.0.0": {
+        "runtime": {
+          "Esp_Hack.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Esp_Hack/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
