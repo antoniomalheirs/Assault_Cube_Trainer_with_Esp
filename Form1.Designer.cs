@@ -95,9 +95,9 @@
             Infiteexplosive.AutoSize = true;
             Infiteexplosive.Location = new Point(63, 157);
             Infiteexplosive.Name = "Infiteexplosive";
-            Infiteexplosive.Size = new Size(105, 19);
+            Infiteexplosive.Size = new Size(115, 19);
             Infiteexplosive.TabIndex = 6;
-            Infiteexplosive.Text = "Infite Explosive";
+            Infiteexplosive.Text = "Infinite Explosive";
             Infiteexplosive.UseVisualStyleBackColor = true;
             Infiteexplosive.CheckedChanged += Infiteexplosive_CheckedChanged;
             // 
