@@ -2,11 +2,12 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun;
 
         static FunctionsHack injetor;
+        static Player cplayer;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask;
 
 
         public Form1()
@@ -17,6 +18,7 @@ namespace Esp_Hack
         private void Form1_Load(object sender, EventArgs e)
         {
             injetor = new FunctionsHack();
+            cplayer = new Player();
         }
 
         private void Infitelife_CheckedChanged(object sender, EventArgs e)
@@ -80,6 +82,19 @@ namespace Esp_Hack
             else
             {
                 StopExplosiverun();
+            }
+        }
+
+        private void Frezzyposition_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Frezzyposition.Checked == true)
+            {
+
+                Locationrun(cplayer.getX(), cplayer.getY(), cplayer.getZ());
+            }
+            else
+            {
+                StopLocationrun();
             }
         }
 
@@ -225,6 +240,34 @@ namespace Esp_Hack
                 explosivetask.Cancel();
                 explosivetask.Dispose();
                 explosivetask = null;
+            }
+        }
+
+        private static void Locationrun(float x, float y, float z)
+        {
+            locationtask = new CancellationTokenSource();
+            CancellationToken Kcancel = locationtask.Token;
+            locationrun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.FrezX(x); injetor.FrezY(y); injetor.FrezZ(z);
+                    Thread.Sleep(500);
+                }
+
+                locationrun = false;
+            });
+        }
+
+        private static void StopLocationrun()
+        {
+            if (locationrun)
+            {
+                locationtask.Cancel();
+                locationtask.Dispose();
+                locationtask = null;
             }
         }
     }

@@ -69,5 +69,35 @@ namespace Esp_Hack
         {
             game.WriteInt(player.basePtr + player.explosive, 0);
         }
+
+        public void FrezX(float x)
+        {
+            game.WriteFloat(player.basePtr + player.X, x);
+        }
+
+        public void UnfrezX()
+        {
+            game.WriteFloat(player.basePtr + player.X, player.getX());
+        }
+
+        public void FrezY(float y)
+        {
+            game.WriteFloat(player.basePtr + player.Y, y);
+        }
+
+        public void UnfrezY()
+        {
+            game.WriteFloat(player.basePtr + player.Y, player.getY());
+        }
+
+        public void FrezZ(float z)
+        {
+            game.WriteFloat(player.basePtr + player.Z, z);
+        }
+
+        public void UnfrezZ()
+        {
+            game.WriteFloat(player.basePtr + player.Z, player.getZ());
+        }
     }
 }
