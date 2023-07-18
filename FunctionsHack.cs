@@ -10,12 +10,10 @@ namespace Esp_Hack
 {
     internal class FunctionsHack
     {
-
         private Swed game;
 
         private readonly Player player = new Player();
         private readonly Entitylist clist = new Entitylist();
-
 
         public FunctionsHack()
         {
@@ -136,7 +134,18 @@ namespace Esp_Hack
                 }
             }
         }
+
+        public void setEntitylocation(List<Enemy> list)
+        {
+            foreach (Enemy enemy in list)
+            {
+                if (enemy.getTeam() == 1)
+                {
+                    game.WriteFloat(enemy.enemyPtr, enemy.X, enemy.Xx);
+                    game.WriteFloat(enemy.enemyPtr, enemy.Y, enemy.Yy);
+                    game.WriteFloat(enemy.enemyPtr, enemy.Z, enemy.Zz);
+                }
+            }
+        }
     }
-
-
 }

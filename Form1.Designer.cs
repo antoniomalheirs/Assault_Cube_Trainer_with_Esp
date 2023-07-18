@@ -37,6 +37,7 @@
             Frezzyposition = new CheckBox();
             Showlistview = new CheckBox();
             Setentitylife = new CheckBox();
+            Enemyfrezzy = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -53,9 +54,9 @@
             Infitelife.AutoSize = true;
             Infitelife.Location = new Point(63, 57);
             Infitelife.Name = "Infitelife";
-            Infitelife.Size = new Size(72, 19);
+            Infitelife.Size = new Size(75, 19);
             Infitelife.TabIndex = 2;
-            Infitelife.Text = "InfiteLife";
+            Infitelife.Text = "Infite Life";
             Infitelife.UseVisualStyleBackColor = true;
             Infitelife.CheckedChanged += Infitelife_CheckedChanged;
             // 
@@ -130,17 +131,29 @@
             Setentitylife.AutoSize = true;
             Setentitylife.Location = new Point(63, 232);
             Setentitylife.Name = "Setentitylife";
-            Setentitylife.Size = new Size(79, 19);
+            Setentitylife.Size = new Size(70, 19);
             Setentitylife.TabIndex = 10;
-            Setentitylife.Text = "1 Heat Kill";
+            Setentitylife.Text = "1 Hit Kill";
             Setentitylife.UseVisualStyleBackColor = true;
             Setentitylife.CheckedChanged += Setentitylife_CheckedChanged;
+            // 
+            // Enemyfrezzy
+            // 
+            Enemyfrezzy.AutoSize = true;
+            Enemyfrezzy.Location = new Point(63, 257);
+            Enemyfrezzy.Name = "Enemyfrezzy";
+            Enemyfrezzy.Size = new Size(97, 19);
+            Enemyfrezzy.TabIndex = 11;
+            Enemyfrezzy.Text = "Enemy Frezzy";
+            Enemyfrezzy.UseVisualStyleBackColor = true;
+            Enemyfrezzy.CheckedChanged += Enemyfrezzy_CheckedChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 332);
+            Controls.Add(Enemyfrezzy);
             Controls.Add(Setentitylife);
             Controls.Add(Showlistview);
             Controls.Add(Frezzyposition);
@@ -168,5 +181,6 @@
         private CheckBox Frezzyposition;
         private CheckBox Showlistview;
         private CheckBox Setentitylife;
+        private CheckBox Enemyfrezzy;
     }
 }

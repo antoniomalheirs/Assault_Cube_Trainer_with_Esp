@@ -2,9 +2,9 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun, enemylocationrun;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask, enemylocationtask;
         private SynchronizationContext synchronizationContext;
 
         static FunctionsHack injetor;
@@ -129,6 +129,18 @@ namespace Esp_Hack
             else
             {
                 StopEnemyliferun();
+            }
+        }
+
+        private void Enemyfrezzy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Enemyfrezzy.Checked == true)
+            {
+                Enemylocationrun();
+            }
+            else
+            {
+                StopEnemylocationrun();
             }
         }
 
@@ -376,6 +388,36 @@ namespace Esp_Hack
                 enemylifetask.Cancel();
                 enemylifetask.Dispose();
                 enemylifetask = null;
+            }
+        }
+
+        private static void Enemylocationrun()
+        {
+            enemylocationtask = new CancellationTokenSource();
+            CancellationToken Kcancel = enemylocationtask.Token;
+            List<Enemy> enemy = new List<Enemy>();
+            enemy = clist.getEntitybotList();
+            enemylocationrun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.setEntitylocation(enemy);
+                    Thread.Sleep(10);
+                }
+
+                enemylocationrun = false;
+            });
+        }
+
+        private static void StopEnemylocationrun()
+        {
+            if (enemylocationrun)
+            {
+                enemylocationtask.Cancel();
+                enemylocationtask.Dispose();
+                enemylocationtask = null;
             }
         }
     }
