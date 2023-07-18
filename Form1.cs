@@ -2,9 +2,9 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask;
         private SynchronizationContext synchronizationContext;
 
         static FunctionsHack injetor;
@@ -117,6 +117,18 @@ namespace Esp_Hack
             else
             {
                 StopListarun();
+            }
+        }
+
+        private void Setentitylife_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Setentitylife.Checked == true)
+            {
+                Enemyliferun();
+            }
+            else
+            {
+                StopEnemyliferun();
             }
         }
 
@@ -325,7 +337,6 @@ namespace Esp_Hack
             });
         }
 
-
         private static void StopListarun()
         {
             if (listarun)
@@ -336,6 +347,35 @@ namespace Esp_Hack
 
                 listview.Items.Clear();
                 listview.Columns.Clear();
+            }
+        }
+
+        private static void Enemyliferun()
+        {
+            enemylifetask = new CancellationTokenSource();
+            CancellationToken Kcancel = enemylifetask.Token;
+            enemyliferun = true;
+
+            List<Enemy> entityList = clist.getEntitybotList();
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.setEntitylife(clist.getEntitybotList(), 10);
+                    Thread.Sleep(500);
+                }
+                enemyliferun = false;
+            });
+        }
+
+        private static void StopEnemyliferun()
+        {
+            if (enemyliferun)
+            {
+                enemylifetask.Cancel();
+                enemylifetask.Dispose();
+                enemylifetask = null;
             }
         }
     }

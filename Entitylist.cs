@@ -89,8 +89,10 @@ namespace Esp_Hack
         public List<Enemy> getEntitybotList()
         {
             int botNumber = getBotnumber();
+
             List<Enemy> list = new List<Enemy>();
             Enemy enemy;
+
             if (botNumber > 0)
             {
                 for (int i = 1; i <= botNumber; i++)

@@ -126,6 +126,17 @@ namespace Esp_Hack
             }
         }
 
-
+        public void setEntitylife(List<Enemy> list, int life)
+        {
+            foreach (Enemy enemy in list)
+            {
+                if (enemy.getTeam() == 1)
+                {
+                    game.WriteInt(enemy.enemyPtr, enemy.health, life);
+                }
+            }
+        }
     }
+
+
 }

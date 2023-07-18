@@ -36,6 +36,7 @@
             Infiteexplosive = new CheckBox();
             Frezzyposition = new CheckBox();
             Showlistview = new CheckBox();
+            Setentitylife = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -124,11 +125,23 @@
             Showlistview.UseVisualStyleBackColor = true;
             Showlistview.CheckedChanged += Showlistview_CheckedChanged;
             // 
+            // Setentitylife
+            // 
+            Setentitylife.AutoSize = true;
+            Setentitylife.Location = new Point(63, 232);
+            Setentitylife.Name = "Setentitylife";
+            Setentitylife.Size = new Size(79, 19);
+            Setentitylife.TabIndex = 10;
+            Setentitylife.Text = "1 Heat Kill";
+            Setentitylife.UseVisualStyleBackColor = true;
+            Setentitylife.CheckedChanged += Setentitylife_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 332);
+            Controls.Add(Setentitylife);
             Controls.Add(Showlistview);
             Controls.Add(Frezzyposition);
             Controls.Add(Infiteexplosive);
@@ -154,5 +167,6 @@
         private CheckBox Infiteexplosive;
         private CheckBox Frezzyposition;
         private CheckBox Showlistview;
+        private CheckBox Setentitylife;
     }
 }
