@@ -11,5 +11,10 @@ namespace Esp_Hack
         {
 
         }
+
+        private void Infitelife_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
