@@ -2,9 +2,9 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun, enemylocationrun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun, enemylocationrun, readmatrixrun;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask, enemylocationtask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask, enemylocationtask, readmatrixtask;
         private SynchronizationContext synchronizationContext;
 
         static FunctionsHack injetor;
@@ -146,7 +146,14 @@ namespace Esp_Hack
 
         private void Esphack_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (Esphack.Checked == true)
+            {
+                Readmatrix();
+            }
+            else
+            {
+                StopReadmatrix();
+            }
         }
 
         private static void Healthrun()
@@ -423,6 +430,34 @@ namespace Esp_Hack
                 enemylocationtask.Cancel();
                 enemylocationtask.Dispose();
                 enemylocationtask = null;
+            }
+        }
+
+        private static void Readmatrix() 
+        {
+            readmatrixtask = new CancellationTokenSource();
+            CancellationToken Kcancel = readmatrixtask.Token;
+            readmatrixrun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    
+                    Thread.Sleep(500);
+                }
+
+                readmatrixrun = false;
+            });
+        }
+
+        private static void StopReadmatrix()
+        {
+            if (readmatrixrun)
+            {
+                readmatrixtask.Cancel();
+                readmatrixtask.Dispose();
+                readmatrixtask = null;
             }
         }
     }
