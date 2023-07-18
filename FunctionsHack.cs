@@ -106,7 +106,15 @@ namespace Esp_Hack
 
             foreach (Enemy enemy in list)
             {
-                
+                ListViewItem item = new ListViewItem(enemy.getPointer().ToString());
+                item.SubItems.Add(enemy.getName().ToString());
+                item.SubItems.Add(enemy.getHealth().ToString());
+                item.SubItems.Add(enemy.getTeam().ToString());
+                item.SubItems.Add(enemy.getX().ToString());
+                item.SubItems.Add(enemy.getY().ToString());
+                item.SubItems.Add(enemy.getZ().ToString());
+
+                ltview.Items.Add(item);
             }
         }
 

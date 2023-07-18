@@ -72,5 +72,40 @@ namespace Esp_Hack
             this.Yy = y;
             this.Zz = z;
         }
+
+        public IntPtr getPointer()
+        {
+            return enemyPtr;
+        }
+
+        public string getName()
+        {
+            return namee;
+        }
+
+        public int getHealth()
+        {
+            return healthh;
+        }
+
+        public int getTeam()
+        {
+            return teamm;
+        }
+
+        public float getX()
+        {
+            return Xx;
+        }
+
+        public float getY()
+        {
+            return Yy;
+        }
+
+        public float getZ()
+        {
+            return Zz;
+        }
     }
 }
