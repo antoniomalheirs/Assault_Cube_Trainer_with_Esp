@@ -98,6 +98,19 @@ namespace Esp_Hack
             }
         }
 
+        private void Showlistview_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Showlistview.Checked == true)
+            {
+
+                
+            }
+            else
+            {
+                
+            }
+        }
+
         private static void Healthrun()
         {
             heatlhtask = new CancellationTokenSource();

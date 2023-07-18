@@ -99,5 +99,16 @@ namespace Esp_Hack
         {
             game.WriteFloat(player.basePtr + player.Z, player.getZ());
         }
+
+        public void showEntitylist(List<Enemy> list, ListView ltview)
+        {
+            ltview.Items.Clear();
+
+            foreach (Enemy enemy in list)
+            {
+                
+            }
+        }
+
     }
 }

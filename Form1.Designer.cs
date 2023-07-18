@@ -35,6 +35,8 @@
             Infinitepbullets = new CheckBox();
             Infiteexplosive = new CheckBox();
             Frezzyposition = new CheckBox();
+            listView1 = new ListView();
+            Showlistview = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -112,11 +114,32 @@
             Frezzyposition.UseVisualStyleBackColor = true;
             Frezzyposition.CheckedChanged += Frezzyposition_CheckedChanged;
             // 
+            // listView1
+            // 
+            listView1.Location = new Point(379, 12);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(185, 238);
+            listView1.TabIndex = 8;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // Showlistview
+            // 
+            Showlistview.AutoSize = true;
+            Showlistview.Location = new Point(63, 207);
+            Showlistview.Name = "Showlistview";
+            Showlistview.Size = new Size(101, 19);
+            Showlistview.TabIndex = 9;
+            Showlistview.Text = "Show ListView";
+            Showlistview.UseVisualStyleBackColor = true;
+            Showlistview.CheckedChanged += Showlistview_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 449);
+            Controls.Add(Showlistview);
+            Controls.Add(listView1);
             Controls.Add(Frezzyposition);
             Controls.Add(Infiteexplosive);
             Controls.Add(Infinitepbullets);
@@ -140,5 +163,7 @@
         private CheckBox Infinitepbullets;
         private CheckBox Infiteexplosive;
         private CheckBox Frezzyposition;
+        private ListView listView1;
+        private CheckBox Showlistview;
     }
 }
