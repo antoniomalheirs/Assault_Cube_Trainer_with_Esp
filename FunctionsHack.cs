@@ -29,5 +29,15 @@ namespace Esp_Hack
         {
             game.WriteInt(player.basePtr + player.health, 100);
         }
+
+        public void Frezshield(int shield)
+        {
+            game.WriteInt(player.basePtr + player.shield, shield);
+        }
+
+        public void Unfrezshield()
+        {
+            game.WriteInt(player.basePtr + player.shield, 0);
+        }
     }
 }

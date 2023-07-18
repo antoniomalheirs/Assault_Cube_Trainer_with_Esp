@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             Infitelife = new CheckBox();
+            Infiniteshield = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -52,11 +53,23 @@
             Infitelife.UseVisualStyleBackColor = true;
             Infitelife.CheckedChanged += Infitelife_CheckedChanged;
             // 
+            // Infiniteshield
+            // 
+            Infiniteshield.AutoSize = true;
+            Infiniteshield.Location = new Point(63, 82);
+            Infiniteshield.Name = "Infiniteshield";
+            Infiniteshield.Size = new Size(98, 19);
+            Infiniteshield.TabIndex = 3;
+            Infiniteshield.Text = "Infinite Shield";
+            Infiniteshield.UseVisualStyleBackColor = true;
+            Infiniteshield.CheckedChanged += Infiniteshield_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 449);
+            Controls.Add(Infiniteshield);
             Controls.Add(Infitelife);
             Controls.Add(label1);
             Name = "Form1";
@@ -70,5 +83,6 @@
 
         private Label label1;
         private CheckBox Infitelife;
+        private CheckBox Infiniteshield;
     }
 }
