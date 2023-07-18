@@ -2,11 +2,11 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun;
 
         static FunctionsHack injetor;
 
-        static CancellationTokenSource heatlhtask, shieldtask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask;
 
 
         public Form1()
@@ -35,12 +35,39 @@ namespace Esp_Hack
         {
             if (Infiniteshield.Checked == true)
             {
-                
+
                 Shieldrun();
             }
             else
             {
                 StopShieldrun();
+            }
+        }
+
+        private void Infinitebullets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Infinitebullets.Checked == true)
+            {
+
+                Bulletsrun();
+            }
+            else
+            {
+                StopBulletsrun();
+            }
+
+        }
+
+        private void Infinitepbullets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Infinitepbullets.Checked == true)
+            {
+
+                Pbulletsrun();
+            }
+            else
+            {
+                StopPbulletsrun();
             }
         }
 
@@ -102,6 +129,62 @@ namespace Esp_Hack
             }
         }
 
+        private static void Bulletsrun()
+        {
+            bulletstask = new CancellationTokenSource();
+            CancellationToken Kcancel = bulletstask.Token;
+            bulletsrun = true;
 
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.Frezbullets(30);
+                    Thread.Sleep(100);
+                }
+
+                bulletsrun = false;
+            });
+        }
+
+        private static void StopBulletsrun()
+        {
+            if (bulletsrun)
+            {
+                injetor.Frezbullets(20);
+                bulletstask.Cancel();
+                bulletstask.Dispose();
+                bulletstask = null;
+            }
+        }
+
+        private static void Pbulletsrun()
+        {
+            pbulletstask = new CancellationTokenSource();
+            CancellationToken Kcancel = pbulletstask.Token;
+            pbulletsrun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.Frezpbullets(10);
+                    Thread.Sleep(100);
+                }
+
+                pbulletsrun = false;
+            });
+        }
+
+        private static void StopPbulletsrun()
+        {
+            if (pbulletsrun)
+            {
+                injetor.Frezpbullets(5);
+                pbulletstask.Cancel();
+                pbulletstask.Dispose();
+                pbulletstask = null;
+            }
+        }
     }
 }

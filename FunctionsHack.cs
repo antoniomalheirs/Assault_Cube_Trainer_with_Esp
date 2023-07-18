@@ -39,5 +39,25 @@ namespace Esp_Hack
         {
             game.WriteInt(player.basePtr + player.shield, 0);
         }
+
+        public void Frezbullets(int bullets)
+        {
+            game.WriteInt(player.basePtr + player.bullets, bullets);
+        }
+
+        public void Unfrezbullets()
+        {
+            game.WriteInt(player.basePtr + player.bullets, 30);
+        }
+
+        public void Frezpbullets(int pbullets)
+        {
+            game.WriteInt(player.basePtr + player.pbullets, pbullets);
+        }
+
+        public void Unfrezpbullets()
+        {
+            game.WriteInt(player.basePtr + player.pbullets, 10);
+        }
     }
 }
