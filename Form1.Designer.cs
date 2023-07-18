@@ -28,19 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            Infitelife = new CheckBox();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Location = new Point(44, 35);
+            label1.Name = "label1";
+            label1.Size = new Size(120, 19);
+            label1.TabIndex = 1;
+            label1.Text = "Funções do Trainer";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Infitelife
+            // 
+            Infitelife.AutoSize = true;
+            Infitelife.Location = new Point(63, 57);
+            Infitelife.Name = "Infitelife";
+            Infitelife.Size = new Size(72, 19);
+            Infitelife.TabIndex = 2;
+            Infitelife.Text = "InfiteLife";
+            Infitelife.UseVisualStyleBackColor = true;
+            Infitelife.CheckedChanged += Infitelife_CheckedChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 449);
+            Controls.Add(Infitelife);
+            Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private CheckBox Infitelife;
     }
 }
