@@ -11,6 +11,7 @@ namespace Esp_Hack
         static Player cplayer;
         static Entitylist clist;
         static ListView listview;
+        static ScreenFunctions screeninjetor;
 
         public Form1()
         {
@@ -23,6 +24,7 @@ namespace Esp_Hack
             cplayer = new Player();
             clist = new Entitylist();
             listview = new ListView();
+            screeninjetor = new ScreenFunctions();
 
             Controls.Add(listview);
             listview.Location = new Point(379, 12);
@@ -439,12 +441,31 @@ namespace Esp_Hack
             CancellationToken Kcancel = readmatrixtask.Token;
             readmatrixrun = true;
 
+            listview.View = View.Details;
+
+            listview.Columns.Add("0", 80);
+            listview.Columns.Add("1", 80);
+            listview.Columns.Add("2", 80);
+            listview.Columns.Add("3", 80);
+            listview.Columns.Add("4", 80);
+            listview.Columns.Add("5", 80);
+            listview.Columns.Add("6", 85);
+            listview.Columns.Add("7", 80);
+            listview.Columns.Add("8", 80);
+            listview.Columns.Add("9", 80);
+            listview.Columns.Add("10", 80);
+            listview.Columns.Add("11", 80);
+            listview.Columns.Add("12", 80);
+            listview.Columns.Add("13", 85);
+            listview.Columns.Add("14", 85);
+            listview.Columns.Add("15", 85);
+
             Task.Run(() =>
             {
                 while (!Kcancel.IsCancellationRequested)
                 {
-                    
-                    Thread.Sleep(500);
+                    screeninjetor.showPlayerMatrix(screeninjetor.Readmatrix(),listview);
+                    Thread.Sleep(150);
                 }
 
                 readmatrixrun = false;

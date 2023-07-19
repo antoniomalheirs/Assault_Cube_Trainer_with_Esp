@@ -1,6 +1,7 @@
 ﻿using Swed32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -26,18 +27,38 @@ namespace Esp_Hack
         {
             if (ltview.InvokeRequired)
             {
-                
+                ltview.Invoke((MethodInvoker)delegate
+                {
+                    showPlayerMatrix(view, ltview);
+                });
                 return;
             }
 
             ltview.Items.Clear();
 
-            
+            ListViewItem item = new ListViewItem(view.m11.ToString());
+            item.SubItems.Add(view.m12.ToString());
+            item.SubItems.Add(view.m13.ToString());
+            item.SubItems.Add(view.m14.ToString());
+            item.SubItems.Add(view.m21.ToString());
+            item.SubItems.Add(view.m22.ToString());
+            item.SubItems.Add(view.m23.ToString());
+            item.SubItems.Add(view.m24.ToString());
+            item.SubItems.Add(view.m31.ToString());
+            item.SubItems.Add(view.m32.ToString());
+            item.SubItems.Add(view.m33.ToString());
+            item.SubItems.Add(view.m34.ToString());
+            item.SubItems.Add(view.m41.ToString());
+            item.SubItems.Add(view.m42.ToString());
+            item.SubItems.Add(view.m43.ToString());
+            item.SubItems.Add(view.m44.ToString());
+
+            ltview.Items.Add(item);
         }
 
         public ViewMatrix Readmatrix()
         {
-            var matriz = game.ReadMatrix(game.GetModuleBase(".exe") + 0x0057DF8C);
+            var matriz = game.ReadMatrix(game.GetModuleBase(".exe") + 0x17DFD0);
             
             vmatrix.m11 = matriz[0];
             vmatrix.m12 = matriz[1];
