@@ -1,3 +1,6 @@
+using ezOverLay;
+using Timer = System.Windows.Forms.Timer;
+
 namespace Esp_Hack
 {
     public partial class Form1 : Form
@@ -12,7 +15,9 @@ namespace Esp_Hack
         static Entitylist clist;
         static ListView listview;
         static ScreenFunctions screeninjetor;
-
+        static ez ez;
+        static Graphics g;
+        private Timer timer;
         public Form1()
         {
             InitializeComponent();
@@ -25,12 +30,48 @@ namespace Esp_Hack
             clist = new Entitylist();
             listview = new ListView();
             screeninjetor = new ScreenFunctions();
+            ez = new ez();
 
-            Controls.Add(listview);
+
+            //Controls.Add(listview);
             listview.Location = new Point(379, 12);
             listview.Size = new Size(570, 300);
 
             synchronizationContext = SynchronizationContext.Current;
+
+            Control.CheckForIllegalCrossThreadCalls = false;
+            ez.SetInvi(this);
+            ez.StartLoop(10, "AssaultCube", this);
+
+            timer = new Timer();
+            timer.Interval = 10;
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            List<Enemy> entityList = clist.getEntitybotList();
+            Pen red = new Pen(Color.Red, 2);
+
+            foreach (var enemy in entityList)
+            {
+                var feet = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPositionplayer(), 800, 600);
+                var head = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPositionplayer(), 800, 600);
+
+                if (feet.X > 0)
+                {
+                    g.DrawLine(red, new Point(800 / 2, 600), feet);
+                }
+            }
         }
 
         private void Infitelife_CheckedChanged(object sender, EventArgs e)
@@ -435,7 +476,7 @@ namespace Esp_Hack
             }
         }
 
-        private static void Readmatrix() 
+        private static void Readmatrix()
         {
             readmatrixtask = new CancellationTokenSource();
             CancellationToken Kcancel = readmatrixtask.Token;
@@ -464,14 +505,7 @@ namespace Esp_Hack
             {
                 while (!Kcancel.IsCancellationRequested)
                 {
-                    screeninjetor.showPlayerMatrix(screeninjetor.Readmatrix(),listview);
-                    List<Enemy> entityList = clist.getEntitybotList();
-
-                    foreach (var enemy in entityList)
-                    {
-                        screeninjetor.WorldToScreen(screeninjetor.Readmatrix(),enemy.getPositionplayer(),800,600);
-                    }
-                    
+                    screeninjetor.showPlayerMatrix(screeninjetor.Readmatrix(), listview);
                     Thread.Sleep(150);
                 }
 

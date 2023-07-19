@@ -164,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(962, 332);
+            ClientSize = new Size(784, 561);
             Controls.Add(Esphack);
             Controls.Add(Enemyfrezzy);
             Controls.Add(Setentitylife);
@@ -179,6 +179,7 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            Paint += Form1_Paint;
             ResumeLayout(false);
             PerformLayout();
         }
