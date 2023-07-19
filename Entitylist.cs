@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Xml.Linq;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using System.Numerics;
 
 namespace Esp_Hack
 {
@@ -25,6 +26,8 @@ namespace Esp_Hack
         public int X = 0x2C;
         public int Y = 0x28;
         public int Z = 0x30;
+        public int head = 0x4;
+        public int feet = 0x28;
 
         private int botnumberr;
         private IntPtr fundPtr;
@@ -36,6 +39,8 @@ namespace Esp_Hack
         private float Yy;
         private float Xx;
         private float Zz;
+        public float headd;
+        public float feett;
 
         public Entitylist()
         {
@@ -86,6 +91,18 @@ namespace Esp_Hack
             return Zz;
         }
 
+        public float getHead()
+        {
+            headd = game.ReadFloat(entityPtr, head);
+            return headd;
+        }
+
+        public float getFeet()
+        {
+            feett = game.ReadFloat(entityPtr, feet);
+            return feett;
+        }
+
         public List<Enemy> getEntitybotList()
         {
             int botNumber = getBotnumber();
@@ -104,8 +121,11 @@ namespace Esp_Hack
                     Yy = getY();
                     Xx = getX();
                     Zz = getZ();
+                    headd = getHead();
+                    feett = getFeet();
+                    
 
-                    enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), entityPtr);
+                    enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), head, feet, entityPtr);
                     list.Add(enemy);
                 }
             }
@@ -119,10 +139,14 @@ namespace Esp_Hack
         private string namee = "";
         public int healthh;
         private int teamm;
+        public float headd;
+        public float feett;
         public float Xx;
         public float Yy;
         public float Zz;
 
+        public int head = 0x4;
+        public int feet = 0x28;
         public int name = 0x205;
         public int health = 0xEC;
         public int team = 0x30C;
@@ -130,7 +154,7 @@ namespace Esp_Hack
         public int Y = 0x28;
         public int Z = 0x30;
 
-        public Enemy(String name, int health, int teammm, float x, float y, float z, IntPtr enemyPtr)
+        public Enemy(String name, int health, int teammm, float x, float y, float z, float head, float feet, IntPtr enemyPtr)
         {
             this.enemyPtr = enemyPtr;
             this.namee = name;
@@ -174,6 +198,11 @@ namespace Esp_Hack
         public float getZ()
         {
             return Zz;
+        }
+
+        public Vector3 getPositionplayer()
+        {
+             return new Vector3(Xx,Yy,Zz);
         }
     }
 }

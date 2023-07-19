@@ -465,6 +465,13 @@ namespace Esp_Hack
                 while (!Kcancel.IsCancellationRequested)
                 {
                     screeninjetor.showPlayerMatrix(screeninjetor.Readmatrix(),listview);
+                    List<Enemy> entityList = clist.getEntitybotList();
+
+                    foreach (var enemy in entityList)
+                    {
+                        screeninjetor.WorldToScreen(screeninjetor.Readmatrix(),enemy.getPositionplayer(),800,600);
+                    }
+                    
                     Thread.Sleep(150);
                 }
 
