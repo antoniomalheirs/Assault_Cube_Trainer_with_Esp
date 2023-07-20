@@ -124,8 +124,7 @@ namespace Esp_Hack
                     headd = getHead();
                     feett = getFeet();
                     
-
-                    enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), head, feet, entityPtr);
+                    enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), headd, feett, entityPtr);
                     list.Add(enemy);
                 }
             }
@@ -202,7 +201,7 @@ namespace Esp_Hack
 
         public Vector3 getPositionplayer()
         {
-             return new Vector3(Xx,Yy,Zz);
+             return new Vector3(Yy,Xx,Zz);
         }
     }
 }

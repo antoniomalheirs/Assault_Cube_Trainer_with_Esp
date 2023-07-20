@@ -18,6 +18,7 @@ namespace Esp_Hack
         static ez ez;
         static Graphics g;
         private Timer timer;
+
         public Form1()
         {
             InitializeComponent();
