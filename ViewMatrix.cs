@@ -13,9 +13,6 @@ namespace Esp_Hack
         public float m31, m32, m33, m34;
         public float m41, m42, m43, m44;
 
-        public ViewMatrix()
-        {
-
-        }
+        public ViewMatrix() {}
     }
 }

@@ -127,7 +127,7 @@ namespace Esp_Hack
         {
             foreach (Enemy enemy in list)
             {
-                if (enemy.getTeam() != player.getTeam()s)
+                if (enemy.getTeam() != player.getTeam())
                 {
                     game.WriteInt(enemy.enemyPtr, enemy.health, life);
                 }

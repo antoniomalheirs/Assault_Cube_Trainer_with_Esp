@@ -18,10 +18,11 @@ namespace Esp_Hack
         static ListView listview;
         static ScreenFunctions screeninjetor;
         static ez ez;
+
         static Graphics g;
         private Timer timer;
-        Pen red = new Pen(Color.Red, 2);
-        Pen green = new Pen(Color.PaleGreen, 2);
+        static Pen red = new Pen(Color.Red, 2);
+        static Pen green = new Pen(Color.PaleGreen, 2);
 
         public Form1()
         {
