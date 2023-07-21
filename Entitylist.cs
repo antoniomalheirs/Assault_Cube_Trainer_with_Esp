@@ -1,14 +1,5 @@
-﻿using System;
-using Swed32;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Swed32;
 using System.Text;
-using System.Threading.Tasks;
-using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Xml.Linq;
-using System.Diagnostics;
-using System.Net.NetworkInformation;
 using System.Numerics;
 
 namespace Esp_Hack

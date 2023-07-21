@@ -1,9 +1,4 @@
-﻿using System;
-using Swed32;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Swed32;
 using System.Numerics;
 
 namespace Esp_Hack
@@ -98,7 +93,7 @@ namespace Esp_Hack
             return teamm;
         }
 
-        public Vector3 getPositionplayer()
+        public Vector3 getPlayerposition()
         {
             pos = new Vector3(game.ReadFloat(basePtr, X), game.ReadFloat(basePtr, Y),game.ReadFloat(basePtr, Z));
             return pos;
