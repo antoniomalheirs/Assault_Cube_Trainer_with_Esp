@@ -101,8 +101,8 @@ namespace Esp_Hack
                 float X = camX + (camX * screenX / screenW);
                 float Y = camY - (camY * screenY / screenW);
 
-                ponto.X = (int)X;
-                ponto.Y = (int)Y;
+                ponto.X = (int)X+10;
+                ponto.Y = (int)Y+25;
 
                 return ponto;
             }
@@ -110,6 +110,19 @@ namespace Esp_Hack
             {
                 return new Point(-99, -99);
             }
+        }
+
+        public Rectangle Entitybox(Point feet, Point head)
+        {
+            var box = new Rectangle();
+
+            box.X = (int)head.X - (feet.Y - head.Y) / 4;
+            box.Y = (int)head.Y;
+
+            box.Width = (int) (feet.Y - head.Y) / 2;
+            box.Height = (int) feet.Y - head.Y;
+
+            return box;
         }
     }
 }

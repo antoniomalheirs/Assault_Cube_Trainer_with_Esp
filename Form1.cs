@@ -65,12 +65,14 @@ namespace Esp_Hack
 
             foreach (var enemy in entityList)
             {
-                var feet = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPositionplayer(), 800, 600);
-                var head = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPositionplayer(), 800, 600);
+                var feet = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPlayerfeet(), 800, 600);
+                var head = screeninjetor.WorldToScreen(screeninjetor.Readmatrix(), enemy.getPlayerhead(), 800, 600);
 
                 if (feet.X > 0)
                 {
                     g.DrawLine(red, new Point(800 / 2, 600), feet);
+                    var box = screeninjetor.Entitybox(feet,head);
+                    g.DrawRectangle(red, box);
                 }
             }
         }
