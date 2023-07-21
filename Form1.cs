@@ -17,8 +17,6 @@ namespace Esp_Hack
         static ListView listview;
         static ScreenFunctions screeninjetor;
 
-        static Graphics g;
-
         private Form2 Form;
 
         public Form1()
