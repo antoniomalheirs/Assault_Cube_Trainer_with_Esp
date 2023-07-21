@@ -18,3 +18,4 @@ C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows
 C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\swed32.dll
 C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.csproj.CopyComplete
 C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\bin\Debug\net6.0-windows\ezOverLay.dll
+C:\Users\Anton\OneDrive\Área de Trabalho\game\Esp_Hack\obj\Debug\net6.0-windows\Esp_Hack.Form2.resources

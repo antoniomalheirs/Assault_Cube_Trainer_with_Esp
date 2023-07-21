@@ -206,7 +206,7 @@ namespace Esp_Hack
              return new Vector3(Yy,Xx,Zz);
         }
 
-        public Vector3 getPlayerfeet()        
+        public Vector3 getPlayerfeet()
         {
             return feett;
         }
