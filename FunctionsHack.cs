@@ -127,7 +127,7 @@ namespace Esp_Hack
         {
             foreach (Enemy enemy in list)
             {
-                if (enemy.getTeam() == 1)
+                if (enemy.getTeam() != player.getTeam()s)
                 {
                     game.WriteInt(enemy.enemyPtr, enemy.health, life);
                 }
@@ -138,12 +138,13 @@ namespace Esp_Hack
         {
             foreach (Enemy enemy in list)
             {
-                if (enemy.getTeam() == 1)
+                if (enemy.getTeam() != player.getTeam())
                 {
                     game.WriteFloat(enemy.enemyPtr, enemy.X, enemy.Xx);
                     game.WriteFloat(enemy.enemyPtr, enemy.Y, enemy.Yy);
                     game.WriteFloat(enemy.enemyPtr, enemy.Z, enemy.Zz);
                 }
+                Thread.Sleep(10);
             }
         }
     }

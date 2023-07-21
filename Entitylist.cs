@@ -46,7 +46,7 @@ namespace Esp_Hack
         {
             game = new Swed("ac_client");
             fundPtr = game.GetModuleBase(".exe");
-            basePtr = game.ReadPointer(fundPtr, 0x00191FCC); //0x0018AC04
+            basePtr = game.ReadPointer(fundPtr, 0x0018AC04); //0x0018AC04
         }
 
         public int getBotnumber()
@@ -112,7 +112,7 @@ namespace Esp_Hack
 
             if (botNumber > 0)
             {
-                for (int i = 0; i < botNumber; i++)
+                for (int i = 1; i <= botNumber; i++)
                 {
                     entityPtr = game.ReadPointer(basePtr + (bot0 * i));
                     namee = getName();
@@ -137,7 +137,7 @@ namespace Esp_Hack
         public IntPtr enemyPtr;
         private string namee = "";
         public int healthh;
-        private int teamm;
+        public int teamm;
         public Vector3 headd;
         public Vector3 feett;
         public float Xx;
@@ -153,12 +153,12 @@ namespace Esp_Hack
         public int Y = 0x28;
         public int Z = 0x30;
 
-        public Enemy(String name, int health, int teammm, float x, float y, float z, Vector3 head, Vector3 feet, IntPtr enemyPtr)
+        public Enemy(String name, int health, int team, float x, float y, float z, Vector3 head, Vector3 feet, IntPtr enemyPtr)
         {
             this.enemyPtr = enemyPtr;
             this.namee = name;
             this.healthh = health;
-            this.teamm = teammm;
+            this.teamm = team;
             this.Xx = x;
             this.Yy = y;
             this.Zz = z;
@@ -206,7 +206,8 @@ namespace Esp_Hack
              return new Vector3(Yy,Xx,Zz);
         }
 
-        public Vector3 getPlayerfeet()        {
+        public Vector3 getPlayerfeet()        
+        {
             return feett;
         }
 

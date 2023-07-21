@@ -21,6 +21,7 @@ namespace Esp_Hack
         public int bullets = 0x140;
         public int pbullets = 0x12C;
         public int explosive = 0x144;
+        public int team = 0x30C;
         public int Y = 0x2C;
         public int X = 0x28;
         public int Z = 0x30;
@@ -31,6 +32,7 @@ namespace Esp_Hack
         private int bulletss;
         private int pbulletss;
         private int explosivee;
+        private int teamm;
         private float Xx;
         private float Yy;
         private float Zz;
@@ -88,6 +90,12 @@ namespace Esp_Hack
         {
             Zz = game.ReadFloat(basePtr, Z);
             return Zz;
+        }
+
+        public int getTeam()
+        {
+            teamm = game.ReadInt(basePtr, team);
+            return teamm;
         }
 
         public Vector3 getPositionplayer()
