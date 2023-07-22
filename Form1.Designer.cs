@@ -39,6 +39,7 @@
             Setentitylife = new CheckBox();
             Enemyfrezzy = new CheckBox();
             Esphack = new CheckBox();
+            Aimbot = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -160,11 +161,23 @@
             Esphack.UseVisualStyleBackColor = true;
             Esphack.CheckedChanged += Esphack_CheckedChanged;
             // 
+            // Aimbot
+            // 
+            Aimbot.AutoSize = true;
+            Aimbot.Location = new Point(63, 307);
+            Aimbot.Name = "Aimbot";
+            Aimbot.Size = new Size(69, 19);
+            Aimbot.TabIndex = 13;
+            Aimbot.Text = "Aim Bot";
+            Aimbot.UseVisualStyleBackColor = true;
+            Aimbot.CheckedChanged += Aimbot_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 361);
+            Controls.Add(Aimbot);
             Controls.Add(Esphack);
             Controls.Add(Enemyfrezzy);
             Controls.Add(Setentitylife);
@@ -196,5 +209,6 @@
         private CheckBox Setentitylife;
         private CheckBox Enemyfrezzy;
         private CheckBox Esphack;
+        private CheckBox Aimbot;
     }
 }

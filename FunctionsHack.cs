@@ -1,4 +1,6 @@
 ﻿using Swed32;
+using System;
+using System.Numerics;
 
 namespace Esp_Hack
 {
@@ -7,6 +9,8 @@ namespace Esp_Hack
         private Swed game;
 
         private readonly Player player = new Player();
+        private readonly ScreenFunctions injetor = new ScreenFunctions();
+
 
         public FunctionsHack()
         {
@@ -139,6 +143,56 @@ namespace Esp_Hack
                     game.WriteFloat(enemy.enemyPtr, enemy.Z, enemy.Zz);
                 }
                 Thread.Sleep(10);
+            }
+        }
+
+        public Vector2 Calcangulo(Enemy target)
+        {
+            float x, y;
+
+            var deltaX = target.headd.X - player.getPlayerhead().X;
+            var deltaY = target.headd.Y - player.getPlayerhead().Y;
+
+            x = (float)(Math.Atan2(deltaY, deltaX) * 180 / Math.PI) + 90;
+
+            float deltaZ = target.headd.Z - player.getPlayerhead().Z;
+            float dist = CalculoDist(target);
+
+            y = (float)(Math.Atan2(deltaZ, dist) * 180 / Math.PI);
+
+            return new Vector2(x, y);
+        }
+
+        public float CalculoDist(Enemy target)
+        {
+            return (float)
+            Math.Sqrt(Math.Pow(target.feett.X - player.getPlayerfeet().X, 2) + Math.Pow(target.feett.Y - player.getPlayerfeet().Y, 2));
+        }
+
+        public void Mira( float x, float y)
+        {
+            game.WriteFloat(player.basePtr, player.Angulo, x);
+            game.WriteFloat(player.basePtr, player.Angulo + 0x4, y);
+        }
+
+        public void Aimex(List<Enemy> enemies)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                var feet = injetor.WorldToScreen(injetor.Readmatrix(), enemy.getPlayerfeet(), 800, 600);
+
+                if (feet.X > 0 )
+                {
+                    if (CalculoDist(enemy) < 10)
+                    {
+                        if (enemy.teamm != player.getTeam() && enemy.getHealth() >= 0 && enemy.getHealth() <= 100)
+                        {
+                            var angulo = Calcangulo(enemy);
+                            Mira(angulo.X, angulo.Y);
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

@@ -20,6 +20,9 @@ namespace Esp_Hack
         public int Y = 0x2C;
         public int X = 0x28;
         public int Z = 0x30;
+        public int head = 0x4;
+        public int feet = 0x28;
+        public int Angulo = 0x34;
 
         private string namee = "";
         private int healthh;
@@ -32,6 +35,8 @@ namespace Esp_Hack
         private float Yy;
         private float Zz;
         private Vector3 pos;
+        private Vector3 headd;
+        private Vector3 feett;
 
         public Player()
         {
@@ -97,6 +102,18 @@ namespace Esp_Hack
         {
             pos = new Vector3(game.ReadFloat(basePtr, X), game.ReadFloat(basePtr, Y),game.ReadFloat(basePtr, Z));
             return pos;
+        }
+
+        public Vector3 getPlayerhead()
+        {
+            headd = game.ReadVec(basePtr, head);
+            return headd;
+        }
+
+        public Vector3 getPlayerfeet()
+        {
+            feett = game.ReadVec(basePtr, feet);
+            return feett;
         }
     }
 }

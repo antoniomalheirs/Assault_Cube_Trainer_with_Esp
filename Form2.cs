@@ -46,7 +46,7 @@ namespace Esp_Hack
         {
             Graphics g = e.Graphics;
 
-            List<Enemy> entityList = clist.getEntitybotList();
+            List<Enemy> entityList = clist.getEntitybotList(cplayer);
 
             foreach (var enemy in entityList)
             {

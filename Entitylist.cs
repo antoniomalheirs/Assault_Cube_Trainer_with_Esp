@@ -24,14 +24,16 @@ namespace Esp_Hack
         private IntPtr fundPtr;
         private IntPtr basePtr;
         private IntPtr entityPtr;
+        private Vector3 headd;
+        private Vector3 feett;
         private int teamm;
         private string namee = "";
         private int healthh;
         private float Yy;
         private float Xx;
         private float Zz;
-        public Vector3 headd;
-        public Vector3 feett;
+        private float Magnitude;
+        
 
         public Entitylist()
         {
@@ -82,6 +84,12 @@ namespace Esp_Hack
             return Zz;
         }
 
+        public float getMag(Player current, Enemy target)
+        {
+            Magnitude = (float) Math.Sqrt(Math.Pow(target.feett.X - current.getPlayerfeet().X,2) + Math.Pow(target.feett.Y - current.getPlayerfeet().Y, 2) + Math.Pow(target.feett.Z - current.getPlayerfeet().Z, 2));
+            return Magnitude; 
+        }
+
         public Vector3 getHead()
         {
             headd = game.ReadVec(entityPtr, head);
@@ -94,7 +102,7 @@ namespace Esp_Hack
             return feett;
         }
 
-        public List<Enemy> getEntitybotList()
+        public List<Enemy> getEntitybotList(Player p)
         {
             int botNumber = getBotnumber();
 
@@ -115,7 +123,13 @@ namespace Esp_Hack
                     headd = getHead();
                     feett = getFeet();
                     
+                    
                     enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), headd, feett, entityPtr);
+
+                    Magnitude = getMag(p,enemy);
+
+                    enemy = new Enemy(getName(), getHealth(), getTeam(), getX(), getY(), getZ(), headd, feett, entityPtr, Magnitude);
+
                     list.Add(enemy);
                 }
             }
@@ -134,6 +148,7 @@ namespace Esp_Hack
         public float Xx;
         public float Yy;
         public float Zz;
+        public float Magnitude;
 
         public int head = 0x4;
         public int feet = 0x28;
@@ -143,6 +158,7 @@ namespace Esp_Hack
         public int X = 0x2C;
         public int Y = 0x28;
         public int Z = 0x30;
+        public int Angulo = 0x34;
 
         public Enemy(String name, int health, int team, float x, float y, float z, Vector3 head, Vector3 feet, IntPtr enemyPtr)
         {
@@ -155,6 +171,20 @@ namespace Esp_Hack
             this.Zz = z;
             this.headd = head;
             this.feett = feet;
+        }
+
+        public Enemy(String name, int health, int team, float x, float y, float z, Vector3 head, Vector3 feet, IntPtr enemyPtr, float magnitude)
+        {
+            this.enemyPtr = enemyPtr;
+            this.namee = name;
+            this.healthh = health;
+            this.teamm = team;
+            this.Xx = x;
+            this.Yy = y;
+            this.Zz = z;
+            this.headd = head;
+            this.feett = feet;
+            this.Magnitude = magnitude;
         }
 
         public IntPtr getPointer()

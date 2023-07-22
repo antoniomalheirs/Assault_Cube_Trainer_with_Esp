@@ -2,9 +2,9 @@ namespace Esp_Hack
 {
     public partial class Form1 : Form
     {
-        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun, enemylocationrun, readmatrixrun;
+        static bool healthrun, shieldrun, bulletsrun, pbulletsrun, explosiverun, locationrun, listarun, enemyliferun, enemylocationrun, readmatrixrun, aimbotrun;
 
-        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask, enemylocationtask, readmatrixtask;
+        static CancellationTokenSource heatlhtask, shieldtask, bulletstask, pbulletstask, explosivetask, locationtask, listatask, enemylifetask, enemylocationtask, readmatrixtask, aimbottask;
         private SynchronizationContext synchronizationContext;
 
         static FunctionsHack injetor;
@@ -164,6 +164,18 @@ namespace Esp_Hack
             {
                 StopReadmatrix();
                 Form?.Close();
+            }
+        }
+
+        private void Aimbot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Aimbot.Checked == true)
+            {
+                Aimbotf();
+            }
+            else
+            {
+                StopAimbotf();
             }
         }
 
@@ -362,7 +374,7 @@ namespace Esp_Hack
                 {
                     synchronizationContext.Post(new SendOrPostCallback((state) =>
                     {
-                        injetor.showEntitylist(clist.getEntitybotList(), listview);
+                        injetor.showEntitylist(clist.getEntitybotList(cplayer), listview);
                     }), null);
 
                     Thread.Sleep(100);
@@ -391,13 +403,13 @@ namespace Esp_Hack
             CancellationToken Kcancel = enemylifetask.Token;
             enemyliferun = true;
 
-            List<Enemy> entityList = clist.getEntitybotList();
+            List<Enemy> entityList = clist.getEntitybotList(cplayer);
 
             Task.Run(() =>
             {
                 while (!Kcancel.IsCancellationRequested)
                 {
-                    injetor.setEntitylife(clist.getEntitybotList(), 10);
+                    injetor.setEntitylife(clist.getEntitybotList(cplayer), 10);
                     Thread.Sleep(500);
                 }
                 enemyliferun = false;
@@ -419,7 +431,7 @@ namespace Esp_Hack
             enemylocationtask = new CancellationTokenSource();
             CancellationToken Kcancel = enemylocationtask.Token;
             List<Enemy> enemy = new List<Enemy>();
-            enemy = clist.getEntitybotList();
+            enemy = clist.getEntitybotList(cplayer);
             enemylocationrun = true;
 
             Task.Run(() =>
@@ -492,6 +504,35 @@ namespace Esp_Hack
                 listview.Items.Clear();
                 listview.Columns.Clear();
             }
+        }
+
+        private static void Aimbotf()
+        {
+            aimbottask = new CancellationTokenSource();
+            CancellationToken Kcancel = aimbottask.Token;
+            aimbotrun = true;
+
+            Task.Run(() =>
+            {
+                while (!Kcancel.IsCancellationRequested)
+                {
+                    injetor.Aimex(clist.getEntitybotList(cplayer));
+                    Thread.Sleep(23);
+                }
+
+                aimbotrun = false;
+            });
+        }
+
+        private static void StopAimbotf()
+        {
+            if (aimbotrun)
+            {
+                aimbottask.Cancel();
+                aimbottask.Dispose();
+                aimbottask = null;
+            }
+
         }
     }
 }
